@@ -19,34 +19,30 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 import com.sun.jersey.core.header.FormDataContentDisposition;
 
 /**
-Trusted Company Pre-Interview task
-
-@Author Asad Hussain
+ * Trusted Company's Pre-Interview Task
+ * @Author Asad Hussain
  */
 @Path("/upload")
 public class UploadFileService {
 	/** The path to the folder where we want to store the uploaded files */
 	private static final String UPLOAD_FOLDER = "c:/uploadedFiles/";
+
 	public UploadFileService() {
 	}
+
 	@Context
 	private UriInfo context;
-	/**
-	 * Returns text response to caller containing current time-stamp
-	 * 
-	 * @return error response in case of missing parameters an internal
-	 *         exception or success response if file has been stored
-	 *         successfully
-	 */
+
+
 	@POST
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	public Response uploadFile(
 			@FormDataParam("file") InputStream uploadedInputStream,
 			@FormDataParam("file") FormDataContentDisposition fileDetail) {
-		// check if all form parameters are provided
+		
 		if (uploadedInputStream == null || fileDetail == null)
 			return Response.status(400).entity("Invalid form data").build();
-		// create our destination folder, if it not exists
+		// create destination folder, if it not exists
 		try {
 			createFolderIfNotExists(UPLOAD_FOLDER);
 		} catch (SecurityException se) {
@@ -63,13 +59,9 @@ public class UploadFileService {
 		return Response.status(200)
 				.entity("File saved to " + uploadedFileLocation).build();
 	}
+
 	/**
-	 * Utility method to save InputStream data to target location/file
-	 * 
-	 * @param inStream
-	 *            - InputStream to be saved
-	 * @param target
-	 *            - full path to destination file
+	 * Save data to target location
 	 */
 	private void saveToFile(InputStream inStream, String target)
 			throws IOException {
@@ -83,8 +75,9 @@ public class UploadFileService {
 		out.flush();
 		out.close();
 	}
-	/*
-	  Creates a folder to desired location if it not already exists
+
+	/**
+	 * Creates a folder to desired location if it not already exists
 	 */
 	private void createFolderIfNotExists(String dirName)
 			throws SecurityException {

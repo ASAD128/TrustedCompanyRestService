@@ -1,7 +1,47 @@
-<h2>File Upload Example</h2>  
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background-color: grey;
+}
+
+h1 {
+    color: lightyellow;
+    text-align: center;
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
+#form {
+ color: lightyellow;
+ text-align: center;
+border-style: solid;
+border-color: lightyellow;
+
+}
+
+</style>
+</head>
+<body>
+
+<h1>Upload File Using Rest Webserivce</h1>
+<div id="form">
+
 <form action="rest/files/upload" method="post" enctype="multipart/form-data">  
        <p>  
-        Select a file : <input type="file" name="file" size="45" />  
+        Please choose a file:  <input type="file" name="file" size="1000" />  
        </p>  
-       <input type="submit" value="Upload File" />  
+
+
+       <br><br/> 
+       <input type="submit" value="Upload File" /> 
+       <br><br/> 
+
 </form> 
+</div>
+
+</body>
+</html>

@@ -1,2 +1,5 @@
 TrustedCompany's Task
-Restful webservice to upload file on Service
+Restful Webservice to upload file on Service
+
+Note: If file is not displaying on destination directory,
+please give modify/write access to destination folder,thanks.
